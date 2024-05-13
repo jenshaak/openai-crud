@@ -40,12 +40,12 @@ export default function Home() {
       <div className="text-5xl font-bold text-black dark:text-white text-center">
         Create and Use
         <div className="bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-fuchsia-600 text-center">
-          Your Personal GPT's
+          {"Your Personal GPT's"}
         </div>
       </div>
       <section className="flex gap-10">
         <div className="bg-base-300 w-80 h-[500px] overflow-y-auto rounded-xl p-5 space-y-5">
-          <h3>Test example GPT's</h3>
+          <h3>{"Test example GPT's"}</h3>
           {exampleGpts && <PickAssistant assistants={exampleGpts} />}
         </div>
         <div className="bg-base-300 w-80 h-[500px] overflow-y-auto rounded-xl p-5 space-y-5">
@@ -82,12 +82,12 @@ export default function Home() {
           )}
         </div>
         <div className="bg-base-300 w-80 h-[500px] overflow-y-auto rounded-xl p-5 space-y-5">
-          <h3>Chat with your GPT's</h3>
+          <h3>{"Chat with your GPT's"}</h3>
           {session ? (
             usersGpts ? (
               <PickAssistant assistants={usersGpts} apiKey={apiKey} />
             ) : (
-              <p>No GPT's yet!</p>
+              <p>No GPT yet!</p>
             )
           ) : (
             <div className="w-full flex justify-center">
