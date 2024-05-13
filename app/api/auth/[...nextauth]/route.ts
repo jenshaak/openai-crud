@@ -8,7 +8,7 @@ import { Account, User as AuthUser, NextAuthOptions, Profile } from "next-auth";
 import { connectToDb } from "@/lib/connection";
 import NextAuth from "next-auth/next";
 
-export const options: NextAuthOptions = {
+const OPTIONS: NextAuthOptions = {
   providers: [
     GitHubProvider({
       profile(profile) {
@@ -121,7 +121,7 @@ export const options: NextAuthOptions = {
   },
 }; 
 
-export const handler = NextAuth(options);
+export const handler = NextAuth(OPTIONS);
 
 export { handler as GET, handler as POST }
     
