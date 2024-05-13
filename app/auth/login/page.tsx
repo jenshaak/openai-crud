@@ -111,7 +111,7 @@ export default function LogInPage() {
           Google
         </button>
         <p className="text-sm">
-          Don't have an account?{" "}
+          {"Don't have an account? "}
           <Link href="/auth/signup" className="link link-primary">
             Sign Up
           </Link>
