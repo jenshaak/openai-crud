@@ -3,15 +3,11 @@
 import CreateChatForm from "@/components/CreateChatForm";
 import PickAssistant from "@/components/PickAssistant";
 import { listAssistants } from "@/lib/openai";
-import { getServerSession } from "next-auth";
-import Image from "next/image";
-import { options } from "./api/auth/[...nextauth]";
 import { addApiKey, fetchUser } from "@/lib/actions/userActions";
 import { EnterIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { User } from "@/typings";
 import { Assistant } from "openai/resources/beta/assistants.mjs";
 
 export default function Home() {

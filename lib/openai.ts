@@ -1,6 +1,5 @@
 "use server"
 
-import { createDecipheriv } from "crypto";
 import OpenAI from "openai";
 import { decrypt } from "./actions/userActions";
 import { revalidatePath } from "next/cache";
