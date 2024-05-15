@@ -91,12 +91,15 @@ const OPTIONS: NextAuthOptions = {
       if(account?.provider == "credentials") {
         return true};
       if(account?.provider == "github" || account?.provider == "google"){
-        await connectToDb();
         try {
+          await connectToDb();
+          console.log("Connected")
           const existingUser = await User.findOne({email: user.email});
+          console.log(existingUser);
           if(!existingUser){
             User.create({username: user.name, email: user.email});
           }
+          console.log("Created user")
           return true;
         } catch (err) {
           console.log("Error saving user", err);
