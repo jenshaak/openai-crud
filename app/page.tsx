@@ -13,7 +13,7 @@ import { Assistant } from "openai/resources/beta/assistants.mjs";
 export default function Home() {
   const [exampleGpts, setExampleGpts] = useState<Assistant[] | null>(null);
   const [usersGpts, setUsersGpts] = useState<Assistant[] | null>(null);
-  const [apiKey, setApiKey] = useState("");
+  const [userKey, setUserKey] = useState("");
 
   const { data: session } = useSession();
 
@@ -22,9 +22,11 @@ export default function Home() {
       const ex = await listAssistants();
       setExampleGpts(ex);
       if (session) {
-        const key = await fetchUser(session?.user.email);
-        setApiKey(key);
-        const data = await listAssistants(apiKey);
+        const user = await fetchUser(session?.user.email);
+        if (user.apiKey) {
+          setUserKey(user.apiKey);
+        }
+        const data = await listAssistants(userKey);
         setUsersGpts(data);
       }
     }
@@ -48,8 +50,8 @@ export default function Home() {
           <h3>Create your custom GPT</h3>
 
           {session ? (
-            apiKey !== "" ? (
-              <CreateChatForm apiKey={apiKey} />
+            userKey !== "" ? (
+              <CreateChatForm apiKey={userKey} />
             ) : (
               <form action={addApiKey}>
                 <input
@@ -81,7 +83,7 @@ export default function Home() {
           <h3>{"Chat with your GPT's"}</h3>
           {session ? (
             usersGpts ? (
-              <PickAssistant assistants={usersGpts} apiKey={apiKey} />
+              <PickAssistant assistants={usersGpts} apiKey={userKey} />
             ) : (
               <p>No GPT yet!</p>
             )
