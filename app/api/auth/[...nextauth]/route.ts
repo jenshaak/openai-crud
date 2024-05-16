@@ -92,6 +92,7 @@ const OPTIONS: NextAuthOptions = {
         return true};
       if(account?.provider == "github" || account?.provider == "google"){
         try {
+          console.log("1")
           await connectToDb();
           console.log("Connected")
           const existingUser = await User.findOne({email: user.email});
